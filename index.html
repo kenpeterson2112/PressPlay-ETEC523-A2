@@ -56,6 +56,45 @@ footer{margin-top:48px;padding:28px 0 60px;border-top:1px solid var(--line)}
 a{color:var(--accent)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 @media (min-width:700px){h1{font-size:3.4rem}}
+
+[hidden]{display:none!important}
+ol.refs li,.refs a{overflow-wrap:anywhere}
+code{overflow-wrap:anywhere;font-size:.88em}
+.todo,.card,.stat{min-width:0;overflow-wrap:anywhere}
+.clip{margin:0}
+.clip audio,.clip video{width:100%;display:block;margin:10px 0 4px;border-radius:12px}
+.clip video{background:#000;max-height:60vh}
+.quote{margin:12px 0;padding:10px 14px;border-left:4px solid var(--accent);font-style:italic}
+.quote.ph{border-left-style:dashed;color:var(--muted);font-style:normal}
+.frame iframe{display:block;width:100%;height:min(760px,80vh);border-radius:12px;background:var(--bg)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:12px;margin:10px 0}
+.stat b{font-family:var(--font-head);font-size:2rem;line-height:1;color:var(--accent);display:block}
+.stat span{font-size:.88rem;color:var(--muted);display:block;margin-top:4px}
+details.card summary{cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font-head);font-weight:600;list-style:none}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary::after{content:"+";color:var(--accent);font-size:1.3rem}
+details.card[open] summary::after{content:"\2212"}
+details.card{padding:6px 18px;margin:10px 0}
+details.card p{margin:0 0 12px}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin-right:6px}
+.src-tag.draft{border-color:var(--accent);color:var(--accent)}
+/* Desktop gate: invites laptop viewers to scan and open this page on a phone */
+.qrcard{display:none}
+.qrtile{background:#fff;padding:.5rem;border-radius:10px;line-height:0;flex:none}
+.qrtile svg{width:7.5rem;height:7.5rem;display:block}
+.qrtext{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.qrtext b{font-family:var(--font-head);font-size:1rem}
+.qrtext span{font-size:.92rem;line-height:1.4}
+.qrtext code{font-size:.72rem;color:var(--muted);overflow-wrap:anywhere}
+@media (min-width:40rem) and (hover:hover) and (pointer:fine){
+  .qrcard{display:flex;flex-direction:row;align-items:center;gap:1rem;padding:.9rem;margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:16px}
+}
+@media (min-width:75rem) and (hover:hover) and (pointer:fine){
+  .qrcard{position:fixed;top:calc(env(safe-area-inset-top,0px) + 4.5rem);right:2rem;width:11.5rem;margin:0;flex-direction:column;align-items:stretch;z-index:5}
+  .qrtile{align-self:center}
+  .qrtile svg{width:8.5rem;height:8.5rem}
+}
+
 </style>
 </head>
 <body>
@@ -74,6 +113,7 @@ a{color:var(--accent)}
     <a href="#m4">4 · Make a decision</a>
     <a href="#m5">5 · Students as producers</a>
     <a href="#m6">6 · Transfer</a>
+    <a href="#principles">Design notes</a>
     <a href="#refs">References</a>
   </nav>
 </header>
@@ -87,6 +127,11 @@ a{color:var(--accent)}
   <p class="lead">Podcasts can teach, and students can make them. Explore both sides of podcasting for learning, using Mayer's principles of multimedia learning as your lens.</p>
   <p class="small">Designed for educators, instructional designers and educational technology professionals. About 20 to 30 minutes, on your phone.</p>
   <p><a class="btn" href="#m1">Start the lab</a></p>
+  <aside class="qrcard" id="qrcard" aria-label="Open this page on your phone">
+    <div class="qrtile" id="qrtile"></div>
+    <div class="qrtext"><b>Built for your phone</b><span>Scan to open this page on a phone. It is designed for small screens and earbuds.</span><code id="qrurl"></code></div>
+  </aside>
+
 
   <div class="card">
     <p class="eyebrow">Learning objectives</p>
@@ -145,37 +190,46 @@ a{color:var(--accent)}
 <!-- MISSION 2 -->
 <section id="m2">
   <p class="eyebrow">Mission 02 · Hear the difference</p>
-  <h2>Human voice or generated voice?</h2>
-  <p>Mayer's Voice principle says people tend to learn better from a human voice than a machine voice. Listen to two short clips, then decide what you notice.</p>
+  <h2>One reading, two formats</h2>
+  <p>We turned one climate reading (Petrova et al., 2026, on climate extremes and migration) into an audio podcast and a video overview with NotebookLM. Spend two minutes on each and notice what changes.</p>
+
+  <div class="card clip" data-src="media/How_Climate_Extremes_Drive_Local_Migration.m4a">
+    <span class="tag">Format A</span>
+    <h3>Audio-only podcast</h3>
+    <p class="small">NotebookLM, two conversational hosts. Made by Seth.</p>
+    <audio controls preload="none" hidden src="media/How_Climate_Extremes_Drive_Local_Migration.m4a"></audio>
+    <div class="todo"><b>TODO (Seth):</b> add <code>How_Climate_Extremes_Drive_Local_Migration.m4a</code> to the <code>media</code> folder.</div>
+  </div>
+  <div class="card clip" data-src="media/Subnational_Climate_Migration.mp4">
+    <span class="tag">Format B</span>
+    <h3>Video overview</h3>
+    <p class="small">NotebookLM video overview of the same reading. Made by Seth.</p>
+    <video controls preload="none" playsinline hidden src="media/Subnational_Climate_Migration.mp4"></video>
+    <div class="todo"><b>TODO (Seth):</b> add <code>Subnational_Climate_Migration.mp4</code> to the <code>media</code> folder. GitHub's web upload limit is 25 MB per file, so compress it or host it unlisted and link it.</div>
+  </div>
+  <div class="card">
+    <p class="eyebrow">What students said</p>
+    <h3>A small study of AI podcasts</h3>
+    <div class="stats">
+      <div class="stat"><b>90%</b><span>agreed the podcasts improved their learning</span></div>
+      <div class="stat"><b>47%</b><span>called the AI voice robotic or monotone</span></div>
+    </div>
+    <p class="small">45 students in one UK undergraduate geography module, using JellyPod (West &amp; Marvell, 2026). Self-reported, one course. That makes it a signal to test, not a verdict.</p>
+    <div class="todo"><b>TODO:</b> our research table also lists 92% "length just right" and 15 to 25 minute episodes. Confirm both in the full article before using them.</div>
+  </div>
 
   <div class="card">
-    <span class="tag">Clip A</span>
-    <h3>Human-made episode</h3>
-    <div class="todo"><b>TODO (Ken):</b> add a short embedded clip or link and a one-line description.</div>
-  </div>
-  <div class="card">
-    <span class="tag">Clip B</span>
-    <h3>Generated with NotebookLM</h3>
-    <div class="todo"><b>TODO (Seth):</b> add a short clip, a one-paragraph note on how NotebookLM builds an episode, and what it does well and badly.</div>
-  </div>
-  <div class="card">
-    <span class="tag">Clip C</span>
-    <h3>Generated with Poducator</h3>
-    <p>A basic working prototype by this team: two voices, a short script, and questions before and after.</p>
-    <p><a class="btn ghost" href="https://kenpeterson2112.github.io/Poducator" target="_blank" rel="noopener">Open Poducator</a></p>
-  </div>
-  <div class="card">
     <p class="eyebrow">Pause and think</p>
-    <p>Which clip would you choose for students, and why? Did voice change how much you trusted or remembered the content?</p>
-    <div class="todo"><b>TODO:</b> check newer research on the Voice principle with modern AI voices before making any claim here.</div>
+    <p>Which format would you give to students, and why? Did the voice change how much you trusted the content? Mayer's Voice principle predicts a human voice helps. What would you check before relying on that with AI voices?</p>
+    <p class="small"><b>Feast activity:</b> share one sentence in the thread comparing the two formats.</p>
   </div>
 </section>
 
 <!-- MISSION 3 -->
 <section id="m3">
   <p class="eyebrow">Mission 03 · Questions that change listening</p>
-  <h2>From passive to active</h2>
-  <p>Two of Mayer's principles shape this design. <b>Pre-training</b> prepares learners with key terms and ideas first. <b>Segmenting</b> breaks content into manageable chunks the learner can pace.</p>
+  <h2>From passive listening to active retrieval</h2>
+  <p>Audio on its own invites passive listening. Questions give learners a reason to listen. Two of Mayer's principles shape the design: <b>Pre-training</b> (key terms first) and <b>Segmenting</b> (short chunks the learner paces).</p>
 
   <div class="tabs" role="tablist" aria-label="Listening structure" data-tabs>
     <button role="tab" aria-selected="true" aria-controls="s1">Before</button>
@@ -183,31 +237,68 @@ a{color:var(--accent)}
     <button role="tab" aria-selected="false" aria-controls="s3">After</button>
   </div>
   <div class="card panel" id="s1" role="tabpanel">
-    <h3>Pre-listening questions</h3>
-    <p>Prime prior knowledge and set a purpose for listening.</p>
+    <h3>Pre-training: terms first</h3>
+    <p>Define the key terms before the statistics. For the climate reading, that means rapid-onset and slow-onset hazards, and what "net migration" counts.</p>
   </div>
   <div class="card panel" id="s2" role="tabpanel" hidden>
-    <h3>Continuous audio</h3>
-    <p>A short episode, paced by the learner. Inline adaptive questions are a future goal, not part of this prototype.</p>
+    <h3>Listen in short segments</h3>
+    <p>Short episodes with the learner in control of pace. Inline adaptive questions are a future goal, not part of this prototype.</p>
   </div>
   <div class="card panel" id="s3" role="tabpanel" hidden>
-    <h3>Post-listening questions</h3>
-    <p>Learners organize and connect what they heard, which is where active processing happens.</p>
+    <h3>Study guide questions, no answers</h3>
+    <p>Open-ended prompts send learners back into the audio to search for answers. That is retrieval practice, not re-listening.</p>
   </div>
-  <p><a class="btn" href="https://kenpeterson2112.github.io/Poducator" target="_blank" rel="noopener">Try the demo</a></p>
-  <div class="todo"><b>TODO (Ken):</b> add a screenshot or short walkthrough of the Poducator flow.</div>
+
+  <div class="card">
+    <p class="eyebrow">Evidence</p>
+    <h3>Study guides made the difference</h3>
+    <p>In a U.S. management information systems course (171 students), NotebookLM podcasts of textbook excerpts were paired with question-based study guides. Exam scores rose by about 3 points out of 15, and the gain was statistically significant. Final course grades did not change significantly. Students who engaged more with the podcasts did better on exams and in the course (Rezvani, 2026).</p>
+    <div class="todo"><b>TODO:</b> these figures come from our research table. Confirm them against the paper before publishing.</div>
+  </div>
+
+  <div class="card clip" data-src="media/module1-study-guide-questions.pdf">
+    <span class="tag">Example</span>
+    <h3>Study guide for the climate reading</h3>
+    <p class="small">Questions only, no answers.</p>
+    <p class="media" hidden><a class="btn ghost" href="media/module1-study-guide-questions.pdf" target="_blank" rel="noopener">Open the study guide</a></p>
+    <div class="todo"><b>TODO (Seth):</b> add <code>module1-study-guide-questions.pdf</code> to the <code>media</code> folder.</div>
+  </div>
+
+  <p>Poducator's before and after questions follow the same idea.</p>
+  <div class="card frame">
+    <p class="eyebrow">Try it here</p>
+    <h3>Poducator</h3>
+    <iframe src="https://kenpeterson2112.github.io/Poducator/" title="Poducator"
+        width="100%" height="760" style="border: 0"
+        allow="autoplay; clipboard-write; web-share" loading="lazy"></iframe>
+    <p class="small">Audio too quiet or the frame too small? <a href="https://kenpeterson2112.github.io/Poducator/" target="_blank" rel="noopener">Open Poducator in its own tab</a>.</p>
+  </div>
 </section>
 
 <!-- CASE FILE -->
 <section id="case">
-  <p class="eyebrow">Case file · Real classroom</p>
-  <h2>A Grade 6 class, a podcast series</h2>
-  <p>A teacher is using GZM Shows audio dramas with a Grade 6 class. The company reports adoption in thousands of middle-grade classrooms in the U.S. and Canada, with teacher guides, choice boards and graphic organizers on its educator site.</p>
-  <div class="todo"><b>TODO:</b> confirm the series with the teacher, get permission, anonymize, then add firsthand details: how episodes are used, what students do before and after, what the teacher has noticed. Source for the GZM claims: TeacherCast, Ask the Tech Coach.</div>
+  <p class="eyebrow">Case study · A real classroom</p>
+  <h2>The Hollow in a Grade 6 class</h2>
+  <p><i>The Hollow</i> from GZM Shows is a modern retelling of Washington Irving's <i>The Legend of Sleepy Hollow</i>. Three sixth graders follow the trail of the Headless Horseman, and listeners decide whether he is a frightening ghoul or simply misunderstood. It is an example of a podcast series that teachers use to support literacy instruction and to build good listening skills. GZM Shows also runs an educator site with classroom extras to go with its series.</p>
+  <p><a class="btn" href="https://gzmshows.com/shows/the-hollow/" target="_blank" rel="noopener">Visit The Hollow on GZM Shows</a></p>
+
+  <div class="card">
+    <p class="eyebrow">Close to home</p>
+    <p>One of our group members has a son in a Grade 6 class that is listening to <i>The Hollow</i> this fall. His teacher has been using the series with the class. That gave us a chance to look at podcasting in a real classroom, close to home, and not only in the research.</p>
+  </div>
+
+  <div class="card">
+    <p class="eyebrow">In the teacher's words</p>
+    <blockquote class="quote ph"><b>Quote 1 (placeholder):</b> how the series is used in class, such as how often, how long, and with what routines.</blockquote>
+    <blockquote class="quote ph"><b>Quote 2 (placeholder):</b> what students do before and after listening.</blockquote>
+    <blockquote class="quote ph"><b>Quote 3 (placeholder):</b> what the teacher has noticed in listening, engagement or discussion.</blockquote>
+    <div class="todo"><b>TODO:</b> waiting on the teacher's reply. Before publishing, get permission to quote, and decide whether to name the teacher and school or keep both anonymous.</div>
+  </div>
+
   <div class="card">
     <p class="eyebrow">Look closer</p>
     <ul class="clean">
-      <li>Which Mayer principles does this use well?</li>
+      <li>Which of Mayer's principles does this use well?</li>
       <li>Audio drama uses music and sound effects. Does the Coherence principle apply to stories as it does to explanations?</li>
       <li>What would change if the voices were generated?</li>
     </ul>
@@ -220,16 +311,15 @@ a{color:var(--accent)}
   <h2>You're the learning designer</h2>
   <div class="card">
     <p class="eyebrow">Your brief</p>
-    <h3>A 10-minute episode on a new topic for Grade 8 students.</h3>
-    <p>How should you support listening? Choose one, then reveal the implications.</p>
+    <h3>A 20-minute AI-generated podcast summarizing a university course reading.</h3>
+    <p>How do you release it to students? Choose one, then reveal the implications.</p>
     <div class="opts" id="choices">
-      <button class="opt" aria-pressed="false" data-k="a"><b>Full transcript on screen the whole time</b><br><span class="small">Everything is visible.</span></button>
-      <button class="opt" aria-pressed="false" data-k="b"><b>Audio only</b><br><span class="small">Keep it simple.</span></button>
-      <button class="opt" aria-pressed="false" data-k="c"><b>Audio plus on-demand key-term cards</b><br><span class="small">Support available when needed.</span></button>
+      <button class="opt" aria-pressed="false" data-k="a"><b>Audio only, posted on the course site</b><br><span class="small">Simple to publish.</span></button>
+      <button class="opt" aria-pressed="false" data-k="b"><b>Audio with the full transcript on screen</b><br><span class="small">Everything is visible.</span></button>
+      <button class="opt" aria-pressed="false" data-k="c"><b>Audio plus open-ended study guide questions, no answers</b><br><span class="small">Listening gets a purpose.</span></button>
     </div>
     <button class="btn" id="reveal">Reveal the implications</button>
     <div class="fb" id="revealFb" role="status" aria-live="polite"></div>
-    <div class="todo"><b>TODO:</b> refine wording and check against Redundancy, Signalling and Modality.</div>
   </div>
 </section>
 
@@ -244,6 +334,7 @@ a{color:var(--accent)}
     <ul class="clean">
       <li><b>Purpose:</b> one idea, one audience.</li>
       <li><b>Script:</b> chunked, conversational, no filler.</li>
+      <li><b>Check:</b> if AI drafts the script, fact-check the terminology against the source and edit.</li>
       <li><b>Voice:</b> their own, or a deliberate choice.</li>
       <li><b>Audience check:</b> a peer listens and answers two questions.</li>
     </ul>
@@ -266,6 +357,26 @@ a{color:var(--accent)}
   <div class="todo"><b>DECISION:</b> shared wall of responses needs a backend (Supabase). Keep or drop by midweek.</div>
 </section>
 
+<!-- DESIGN NOTES -->
+<section id="principles">
+  <p class="eyebrow">Design notes</p>
+  <h2>How this resource applies Mayer</h2>
+  <p>Tap a principle to see what we did with it. "Research table" means it comes from the two journal articles. "Draft" means it is our proposal.</p>
+<details class="card"><summary>Multimedia</summary><p><span class="src-tag draft">Draft</span>Each mission pairs words with audio, video or an interactive. The podcast and the video overview carry the same reading in two forms.</p></details>
+<details class="card"><summary>Coherence</summary><p><span class="src-tag">Research table</span>Scripts stay on the core reading. No background music, filler or tangents.</p></details>
+<details class="card"><summary>Signalling</summary><p><span class="src-tag">Research table</span>Study guide questions tell listeners what to pull out of the audio (Rezvani, 2026).</p></details>
+<details class="card"><summary>Redundancy</summary><p><span class="src-tag draft">Draft</span>Transcripts are offered on request, not shown during playback.</p></details>
+<details class="card"><summary>Spatial contiguity</summary><p><span class="src-tag draft">Draft</span>Feedback appears next to the question it answers.</p></details>
+<details class="card"><summary>Temporal contiguity</summary><p><span class="src-tag draft">Draft</span>The video overview times narration with its visuals. Audio-only episodes do not need this.</p></details>
+<details class="card"><summary>Segmenting</summary><p><span class="src-tag">Research table</span>Short recaps the learner paces (West &amp; Marvell, 2026). This page is also split into short missions.</p></details>
+<details class="card"><summary>Pre-training</summary><p><span class="src-tag">Research table</span>Key terms come first, such as rapid-onset and slow-onset hazards, before the statistics. A person checks the generated terminology.</p></details>
+<details class="card"><summary>Modality</summary><p><span class="src-tag">Research table</span>Audio is paired with visuals, prompts and discussion, not used alone (West &amp; Marvell, 2026).</p></details>
+<details class="card"><summary>Voice</summary><p><span class="src-tag">Research table</span>In one study 47% of students found the AI voice robotic or monotone. We flag voice quality and suggest editing, or human narration for key segments.</p></details>
+<details class="card"><summary>Personalisation</summary><p><span class="src-tag">Research table</span>Two-host conversational scripts using &ldquo;we&rdquo; and &ldquo;you&rdquo;. Robotic tone gets edited.</p></details>
+<details class="card"><summary>Image</summary><p><span class="src-tag draft">Draft</span>The video overview relies on relevant visuals, not a talking head.</p></details>
+  <div class="todo"><b>TODO (Seth):</b> confirm the draft entries. Our table had these cells empty: Multimedia, Redundancy, Spatial, Temporal and Image.</div>
+</section>
+
 </main>
 
 <footer>
@@ -273,18 +384,22 @@ a{color:var(--accent)}
     <h2 id="refs">References</h2>
     <div class="todo"><b>TODO:</b> verify every entry below before publishing, and add the scholarly sources for Missions 1, 2 and 5.</div>
     <ol class="refs">
-      <li>Mayer, R. E. <i>Multimedia learning.</i> Cambridge University Press. <span class="small">(Verify edition and year, and page numbers for each principle.)</span></li>
-      <li>Digital Learning Institute. <i>Mayer's 12 principles of multimedia learning (with practical examples).</i> <a href="https://www.digitallearninginstitute.com/blog/mayers-principles-multimedia-learning">Link</a> <span class="small">(Secondary summary. Add author and date if shown.)</span></li>
+      <li>Mayer, R. E. <i>Multimedia learning.</i> Cambridge University Press. <span class="small">(Verify edition, year and page numbers for each principle.)</span></li>
+      <li>Petrova, K., Zantout, K., Zimmermann, S., Niva, V., Kummu, M., Frieler, K., &amp; Schewe, J. (2026). Compound and heterogeneous relationships between climate extremes and global net migration. <i>Nature Climate Change, 16</i>(10), 1162&ndash;1169. <a href="https://doi.org/10.1038/s41558-026-02752-4">https://doi.org/10.1038/s41558-026-02752-4</a></li>
+      <li>Rezvani, E. (2026). AI-generated podcasts and learning outcomes: The role of behavioral engagement and scaffolding. <i>Computers &amp; Education, 254</i>, 105719. <a href="https://doi.org/10.1016/j.compedu.2026.105719">https://doi.org/10.1016/j.compedu.2026.105719</a></li>
+      <li>West, H., &amp; Marvell, A. (2026). Exploring the use of generative AI podcasts to support students learning. <i>Journal of Geography in Higher Education, 50</i>(5), 622&ndash;628. <a href="https://doi.org/10.1080/03098265.2026.2682208">https://doi.org/10.1080/03098265.2026.2682208</a></li>
+      <li>Digital Learning Institute. (n.d.). <i>Mayer's 12 principles of multimedia learning (with practical examples).</i> <a href="https://www.digitallearninginstitute.com/blog/mayers-principles-multimedia-learning">https://www.digitallearninginstitute.com/blog/mayers-principles-multimedia-learning</a></li>
       <li>TeacherCast. <i>Ask the Tech Coach: GenZ Media and student podcasts.</i> <a href="https://teachercast.net/ga5a">Link</a></li>
       <li>GZM Shows. <a href="https://gzmshows.com/">gzmshows.com</a></li>
     </ol>
-    <p><b>AI use statement.</b> <span class="small">TODO: describe how AI was used in research, coding and drafting.</span></p>
+    <p><b>AI use statement.</b> <span class="small">The example podcast, video overview and study guide were generated with Google NotebookLM from Petrova et al. (2026). Claude (Anthropic) assisted with page design and code. TODO: both team members confirm this wording.</span></p>
     <p><b>Licence.</b> <span class="small">TODO: add team names and a Creative Commons licence.</span></p>
     <p class="small">A mobile-first learning resource for educational technology professionals.</p>
     <p><a href="#start">Back to top</a></p>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
 // Menu
 const mb=document.getElementById('menuBtn'),menu=document.getElementById('menu');
@@ -317,15 +432,38 @@ document.querySelectorAll('.quiz').forEach(q=>{
 (function(){
   const opts=[...document.querySelectorAll('#choices .opt')],fb=document.getElementById('revealFb');let k=null;
   const msg={
-    a:'A full transcript shown during playback duplicates the narration, which risks the Redundancy principle and can overload learners. Offering it on demand is usually better.',
-    b:'Audio only keeps it coherent, but some learners lose key terms. Consider verbal signposts (Signalling) and a way to review terms.',
-    c:'Support on demand respects limited capacity: learners get help when needed without duplicate input. Check that the cards are short and clearly signalled.'
+    a:'Easy to publish, but nothing asks learners to do anything with it. That leaves passive listening, the risk both studies point to. Rezvani (2026) found exam gains when podcasts came with study guides.',
+    b:'A full transcript on screen duplicates the narration, which risks the Redundancy principle. A transcript on request still helps access, so offer it as an option, not the default.',
+    c:'This matches the strongest evidence we found. Questions signal what to listen for (Signalling), prompt retrieval, and send learners back into the audio. Keep the questions open-ended, and edit the generated terminology before release.'
   };
   opts.forEach(o=>o.addEventListener('click',()=>{k=o.dataset.k;opts.forEach(x=>x.setAttribute('aria-pressed',x===o))}));
   document.getElementById('reveal').addEventListener('click',()=>{
     fb.textContent=k?msg[k]:'Choose an option first.';fb.classList.add('show');
   });
 })();
+
+// Desktop gate QR code (shown only on laptops and desktops by CSS)
+(function(){
+  // Swap this for the GitHub Pages address once the page is published there.
+  var SHARE_URL="https://claude.ai/artifact/SfSARBC3kxkGXyTtVr6oYr";
+  var url=SHARE_URL;
+  try{if(/\.github\.io$/.test(location.hostname)){url=location.href.split('#')[0]}}catch(e){}
+  var card=document.getElementById('qrcard'),tile=document.getElementById('qrtile');
+  document.getElementById('qrurl').textContent=url;
+  try{
+    var qr=qrcode(0,'M');qr.addData(url);qr.make();
+    var n=qr.getModuleCount(),m=2,d='';
+    for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(qr.isDark(r,c))d+='M'+(c+m)+' '+(r+m)+'h1v1h-1z';
+    var size=n+m*2;
+    tile.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code that opens this page" shape-rendering="crispEdges" viewBox="0 0 '+size+' '+size+'"><rect width="'+size+'" height="'+size+'" fill="#fff"/><path fill="#000" d="'+d+'"/></svg>';
+  }catch(e){tile.hidden=true}
+})();
+
+// Show media only when the file exists, otherwise show the TODO note
+document.querySelectorAll('.clip[data-src]').forEach(function(c){
+  var m=c.querySelector('.media,audio,video'),t=c.querySelector('.todo');
+  fetch(c.dataset.src,{method:'HEAD'}).then(function(r){if(!r.ok)throw 0;m.hidden=false;t.hidden=true}).catch(function(){m.hidden=true;t.hidden=false});
+});
 </script>
 </body>
 </html>
