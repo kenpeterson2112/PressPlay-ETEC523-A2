@@ -86,10 +86,10 @@ details.card p{margin:0 0 12px}
 .qrtext b{font-family:var(--font-head);font-size:1rem}
 .qrtext span{font-size:.92rem;line-height:1.4}
 .qrtext code{font-size:.72rem;color:var(--muted);overflow-wrap:anywhere}
-@media (min-width:40rem) and (hover:hover) and (pointer:fine){
+@media (min-width:40rem){
   .qrcard{display:flex;flex-direction:row;align-items:center;gap:1rem;padding:.9rem;margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:16px}
 }
-@media (min-width:75rem) and (hover:hover) and (pointer:fine){
+@media (min-width:75rem){
   .qrcard{position:fixed;top:calc(env(safe-area-inset-top,0px) + 4.5rem);right:2rem;width:11.5rem;margin:0;flex-direction:column;align-items:stretch;z-index:5}
   .qrtile{align-self:center}
   .qrtile svg{width:8.5rem;height:8.5rem}
@@ -442,10 +442,9 @@ document.querySelectorAll('.quiz').forEach(q=>{
   });
 })();
 
-// Desktop gate QR code (shown only on laptops and desktops by CSS)
+// Desktop gate QR code (shown on screens 640px and wider by CSS)
 (function(){
-  // Swap this for the GitHub Pages address once the page is published there.
-  var SHARE_URL="https://claude.ai/artifact/SfSARBC3kxkGXyTtVr6oYr";
+  var SHARE_URL="https://kenpeterson2112.github.io/PressPlay-ETEC523-A2/";
   var url=SHARE_URL;
   try{if(/\.github\.io$/.test(location.hostname)){url=location.href.split('#')[0]}}catch(e){}
   var card=document.getElementById('qrcard'),tile=document.getElementById('qrtile');
