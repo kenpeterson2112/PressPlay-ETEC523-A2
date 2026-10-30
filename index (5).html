@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e1f1a">
+<title>Press Play | Podcasting as a Learning Tool</title>
+<meta name="description" content="A mobile-first open educational resource on podcasts as learning resources and as student-made creative products, grounded in Mayer's principles of multimedia learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1f1a;--card:#16302a;--ink:#eaf3ee;--muted:#9bb8ac;--line:#25473f;--accent:#f4c542;--accent-ink:#0e1f1a;--soft:#1f3d35;--good:#69db7c;--warn:#f0c36d;--font-head:"Poppins",system-ui,sans-serif;--font-body:"Nunito",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--font-body)}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header.bar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.brand{font-weight:800;letter-spacing:.06em;font-size:.8rem;text-decoration:none;color:var(--ink)}
+.bar button{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;min-height:40px;padding:0 12px;font:inherit;font-size:.9rem}
+nav#menu{display:none;border-top:1px solid var(--line);background:var(--bg)}
+nav#menu.open{display:block}
+nav#menu a{display:block;padding:14px 16px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+section{padding:44px 0 8px}
+.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h1,h2,h3,.brand,.btn{font-family:var(--font-head)}
+h1{font-size:2.5rem;line-height:1.05;margin:8px 0 14px;letter-spacing:-.02em}
+h1 span{color:var(--accent)}
+h2{font-size:1.6rem;line-height:1.15;margin:0 0 10px}
+h3{font-size:1.1rem;margin:0 0 6px}
+p{margin:0 0 14px}
+.lead{font-size:1.1rem;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.ghost{background:none;border:2px solid var(--accent);color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--soft);color:var(--accent);padding:3px 9px;border-radius:99px;margin-bottom:8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.tabs button{flex:0 0 auto;min-height:44px;padding:0 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.95rem}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+.panel[hidden]{display:none}
+.opts{display:grid;gap:10px;margin:12px 0}
+.opt{text-align:left;width:100%;min-height:52px;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--accent)}
+.opt.right{border-color:var(--good)}
+.opt.wrong{border-color:var(--warn)}
+.fb{display:none;margin-top:10px;padding:12px 14px;border-radius:12px;background:var(--soft)}
+.fb.show{display:block}
+.todo{border:2px dashed var(--accent);border-radius:12px;padding:12px 14px;margin:14px 0;font-size:.92rem;color:var(--muted)}
+.todo b{color:var(--accent)}
+textarea{width:100%;min-height:110px;padding:12px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+label{display:block;font-weight:700;margin:14px 0 6px}
+.small{font-size:.85rem;color:var(--muted)}
+ul.clean{padding-left:20px;margin:0 0 14px}
+ol.refs{padding-left:20px}
+ol.refs li{margin-bottom:10px;font-size:.92rem}
+footer{margin-top:48px;padding:28px 0 60px;border-top:1px solid var(--line)}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (min-width:700px){h1{font-size:3.4rem}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#start">PRESS PLAY</a>
+    <button id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+  <nav id="menu" aria-label="Main navigation">
+    <a href="#start">Start here</a>
+    <a href="#m1">1 · Why audio?</a>
+    <a href="#m2">2 · Hear the difference</a>
+    <a href="#m3">3 · Questions that change listening</a>
+    <a href="#case">Case file</a>
+    <a href="#m4">4 · Make a decision</a>
+    <a href="#m5">5 · Students as producers</a>
+    <a href="#m6">6 · Transfer</a>
+    <a href="#refs">References</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<!-- HERO -->
+<section id="start">
+  <p class="eyebrow">ETEC 523 · Movable Feast · A2</p>
+  <h1>Press <span>play.</span></h1>
+  <p class="lead">Podcasts can teach, and students can make them. Explore both sides of podcasting for learning, using Mayer's principles of multimedia learning as your lens.</p>
+  <p class="small">Designed for educators, instructional designers and educational technology professionals. About 20 to 30 minutes, on your phone.</p>
+  <p><a class="btn" href="#m1">Start the lab</a></p>
+
+  <div class="card">
+    <p class="eyebrow">Learning objectives</p>
+    <h2>What you will be able to do</h2>
+    <ul class="clean">
+      <li>Explain how Mayer's principles apply to audio-based learning.</li>
+      <li>Evaluate a generated episode against those principles.</li>
+      <li>Design a short student podcast task for your own context.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MISSION 1 -->
+<section id="m1">
+  <p class="eyebrow">Mission 01 · Foundations</p>
+  <h2>Why audio?</h2>
+  <p>Mayer's theory rests on three assumptions about how people learn from words and pictures. Tap each one and think about what it means for a listener with earbuds in.</p>
+
+  <div class="tabs" role="tablist" aria-label="Mayer's three assumptions" data-tabs>
+    <button role="tab" aria-selected="true" aria-controls="a1">Dual channels</button>
+    <button role="tab" aria-selected="false" aria-controls="a2">Limited capacity</button>
+    <button role="tab" aria-selected="false" aria-controls="a3">Active processing</button>
+  </div>
+  <div class="card panel" id="a1" role="tabpanel">
+    <h3>People process sound and visuals through separate channels.</h3>
+    <p>A podcast uses the auditory channel only. What could the visual channel add, and what could it overload?</p>
+  </div>
+  <div class="card panel" id="a2" role="tabpanel" hidden>
+    <h3>Each channel can hold only so much at once.</h3>
+    <p>A long episode with new vocabulary in every sentence can overload a listener. Pacing and structure matter.</p>
+  </div>
+  <div class="card panel" id="a3" role="tabpanel" hidden>
+    <h3>Learners must actively organize and connect what they hear.</h3>
+    <p>Passive listening is not enough. This is the case for questions before and after an episode.</p>
+  </div>
+
+  <div class="card">
+    <p class="eyebrow">Don't mix these up</p>
+    <p><b>Podcast:</b> episodic audio, usually on demand.<br><b>Audiobook:</b> a text read aloud, in full.<br><b>Lecture capture:</b> a recorded class, often with slides.</p>
+    <div class="todo"><b>TODO:</b> confirm definitions and add one source.</div>
+  </div>
+
+  <div class="card quiz" data-correct="1">
+    <p class="eyebrow">Quick check · 1 question</p>
+    <h3>Which statement best captures the active-processing assumption?</h3>
+    <div class="opts">
+      <button class="opt" aria-pressed="false">Learners absorb whatever they hear.</button>
+      <button class="opt" aria-pressed="false">Learners must organize and connect what they hear to learn from it.</button>
+      <button class="opt" aria-pressed="false">Audio is always better than text.</button>
+    </div>
+    <button class="btn check">Check answer</button>
+    <div class="fb" role="status" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- MISSION 2 -->
+<section id="m2">
+  <p class="eyebrow">Mission 02 · Hear the difference</p>
+  <h2>Human voice or generated voice?</h2>
+  <p>Mayer's Voice principle says people tend to learn better from a human voice than a machine voice. Listen to two short clips, then decide what you notice.</p>
+
+  <div class="card">
+    <span class="tag">Clip A</span>
+    <h3>Human-made episode</h3>
+    <div class="todo"><b>TODO (Ken):</b> add a short embedded clip or link and a one-line description.</div>
+  </div>
+  <div class="card">
+    <span class="tag">Clip B</span>
+    <h3>Generated with NotebookLM</h3>
+    <div class="todo"><b>TODO (Seth):</b> add a short clip, a one-paragraph note on how NotebookLM builds an episode, and what it does well and badly.</div>
+  </div>
+  <div class="card">
+    <span class="tag">Clip C</span>
+    <h3>Generated with Poducator</h3>
+    <p>A basic working prototype by this team: two voices, a short script, and questions before and after.</p>
+    <p><a class="btn ghost" href="https://kenpeterson2112.github.io/Poducator" target="_blank" rel="noopener">Open Poducator</a></p>
+  </div>
+  <div class="card">
+    <p class="eyebrow">Pause and think</p>
+    <p>Which clip would you choose for students, and why? Did voice change how much you trusted or remembered the content?</p>
+    <div class="todo"><b>TODO:</b> check newer research on the Voice principle with modern AI voices before making any claim here.</div>
+  </div>
+</section>
+
+<!-- MISSION 3 -->
+<section id="m3">
+  <p class="eyebrow">Mission 03 · Questions that change listening</p>
+  <h2>From passive to active</h2>
+  <p>Two of Mayer's principles shape this design. <b>Pre-training</b> prepares learners with key terms and ideas first. <b>Segmenting</b> breaks content into manageable chunks the learner can pace.</p>
+
+  <div class="tabs" role="tablist" aria-label="Listening structure" data-tabs>
+    <button role="tab" aria-selected="true" aria-controls="s1">Before</button>
+    <button role="tab" aria-selected="false" aria-controls="s2">During</button>
+    <button role="tab" aria-selected="false" aria-controls="s3">After</button>
+  </div>
+  <div class="card panel" id="s1" role="tabpanel">
+    <h3>Pre-listening questions</h3>
+    <p>Prime prior knowledge and set a purpose for listening.</p>
+  </div>
+  <div class="card panel" id="s2" role="tabpanel" hidden>
+    <h3>Continuous audio</h3>
+    <p>A short episode, paced by the learner. Inline adaptive questions are a future goal, not part of this prototype.</p>
+  </div>
+  <div class="card panel" id="s3" role="tabpanel" hidden>
+    <h3>Post-listening questions</h3>
+    <p>Learners organize and connect what they heard, which is where active processing happens.</p>
+  </div>
+  <p><a class="btn" href="https://kenpeterson2112.github.io/Poducator" target="_blank" rel="noopener">Try the demo</a></p>
+  <div class="todo"><b>TODO (Ken):</b> add a screenshot or short walkthrough of the Poducator flow.</div>
+</section>
+
+<!-- CASE FILE -->
+<section id="case">
+  <p class="eyebrow">Case file · Real classroom</p>
+  <h2>A Grade 6 class, a podcast series</h2>
+  <p>A teacher is using GZM Shows audio dramas with a Grade 6 class. The company reports adoption in thousands of middle-grade classrooms in the U.S. and Canada, with teacher guides, choice boards and graphic organizers on its educator site.</p>
+  <div class="todo"><b>TODO:</b> confirm the series with the teacher, get permission, anonymize, then add firsthand details: how episodes are used, what students do before and after, what the teacher has noticed. Source for the GZM claims: TeacherCast, Ask the Tech Coach.</div>
+  <div class="card">
+    <p class="eyebrow">Look closer</p>
+    <ul class="clean">
+      <li>Which Mayer principles does this use well?</li>
+      <li>Audio drama uses music and sound effects. Does the Coherence principle apply to stories as it does to explanations?</li>
+      <li>What would change if the voices were generated?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MISSION 4 -->
+<section id="m4">
+  <p class="eyebrow">Mission 04 · Make a decision</p>
+  <h2>You're the learning designer</h2>
+  <div class="card">
+    <p class="eyebrow">Your brief</p>
+    <h3>A 10-minute episode on a new topic for Grade 8 students.</h3>
+    <p>How should you support listening? Choose one, then reveal the implications.</p>
+    <div class="opts" id="choices">
+      <button class="opt" aria-pressed="false" data-k="a"><b>Full transcript on screen the whole time</b><br><span class="small">Everything is visible.</span></button>
+      <button class="opt" aria-pressed="false" data-k="b"><b>Audio only</b><br><span class="small">Keep it simple.</span></button>
+      <button class="opt" aria-pressed="false" data-k="c"><b>Audio plus on-demand key-term cards</b><br><span class="small">Support available when needed.</span></button>
+    </div>
+    <button class="btn" id="reveal">Reveal the implications</button>
+    <div class="fb" id="revealFb" role="status" aria-live="polite"></div>
+    <div class="todo"><b>TODO:</b> refine wording and check against Redundancy, Signalling and Modality.</div>
+  </div>
+</section>
+
+<!-- MISSION 5 -->
+<section id="m5">
+  <p class="eyebrow">Mission 05 · Students as producers</p>
+  <h2>Make a two-minute episode</h2>
+  <p>Podcasts are also something students can create. Use Mayer's principles as a design checklist for the task.</p>
+  <div class="card">
+    <p class="eyebrow">The task</p>
+    <p>Students plan and record a two-minute episode explaining one idea, applying at least three principles.</p>
+    <ul class="clean">
+      <li><b>Purpose:</b> one idea, one audience.</li>
+      <li><b>Script:</b> chunked, conversational, no filler.</li>
+      <li><b>Voice:</b> their own, or a deliberate choice.</li>
+      <li><b>Audience check:</b> a peer listens and answers two questions.</li>
+    </ul>
+    <div class="todo"><b>TODO (Ken):</b> add a simple rubric idea and a student-friendly planning template.</div>
+  </div>
+</section>
+
+<!-- MISSION 6 -->
+<section id="m6">
+  <p class="eyebrow">Mission 06 · Transfer your learning</p>
+  <h2>Design a podcast activity</h2>
+  <p>Start with a learning problem, not a tool.</p>
+  <label for="q1">1. What learning problem do you want to address?</label>
+  <textarea id="q1" placeholder="For example: students struggle with dense reading in science."></textarea>
+  <label for="q2">2. How could audio help, and which Mayer principle guides your choice?</label>
+  <textarea id="q2" placeholder="Name a principle and say why."></textarea>
+  <label for="q3">3. What might audio fail to do?</label>
+  <textarea id="q3" placeholder="Consider access, attention, assessment, language."></textarea>
+  <p class="small">Your responses stay in your browser. To discuss them with the cohort, share a sentence in the Movable Feast thread on the course blog.</p>
+  <div class="todo"><b>DECISION:</b> shared wall of responses needs a backend (Supabase). Keep or drop by midweek.</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2 id="refs">References</h2>
+    <div class="todo"><b>TODO:</b> verify every entry below before publishing, and add the scholarly sources for Missions 1, 2 and 5.</div>
+    <ol class="refs">
+      <li>Mayer, R. E. <i>Multimedia learning.</i> Cambridge University Press. <span class="small">(Verify edition and year, and page numbers for each principle.)</span></li>
+      <li>Digital Learning Institute. <i>Mayer's 12 principles of multimedia learning (with practical examples).</i> <a href="https://www.digitallearninginstitute.com/blog/mayers-principles-multimedia-learning">Link</a> <span class="small">(Secondary summary. Add author and date if shown.)</span></li>
+      <li>TeacherCast. <i>Ask the Tech Coach: GenZ Media and student podcasts.</i> <a href="https://teachercast.net/ga5a">Link</a></li>
+      <li>GZM Shows. <a href="https://gzmshows.com/">gzmshows.com</a></li>
+    </ol>
+    <p><b>AI use statement.</b> <span class="small">TODO: describe how AI was used in research, coding and drafting.</span></p>
+    <p><b>Licence.</b> <span class="small">TODO: add team names and a Creative Commons licence.</span></p>
+    <p class="small">A mobile-first learning resource for educational technology professionals.</p>
+    <p><a href="#start">Back to top</a></p>
+  </div>
+</footer>
+
+<script>
+// Menu
+const mb=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+mb.addEventListener('click',()=>{const o=menu.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+menu.addEventListener('click',e=>{if(e.target.tagName==='A'){menu.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+// Tabs
+document.querySelectorAll('[data-tabs]').forEach(list=>{
+  const tabs=[...list.querySelectorAll('[role=tab]')];
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+  }));
+});
+
+// Quick check
+document.querySelectorAll('.quiz').forEach(q=>{
+  const opts=[...q.querySelectorAll('.opt')],fb=q.querySelector('.fb');let pick=-1;
+  opts.forEach((o,i)=>o.addEventListener('click',()=>{pick=i;opts.forEach(x=>x.setAttribute('aria-pressed',x===o))}));
+  q.querySelector('.check').addEventListener('click',()=>{
+    if(pick<0){fb.textContent='Choose an answer first.';fb.classList.add('show');return}
+    const ok=pick===+q.dataset.correct;
+    opts.forEach((o,i)=>{o.classList.remove('right','wrong');if(i===pick)o.classList.add(ok?'right':'wrong')});
+    fb.textContent=ok?'Right. Learning depends on the learner actively organizing and connecting what they hear.':'Not quite. Think about what the learner has to do, not just what they receive.';
+    fb.classList.add('show');
+  });
+});
+
+// Decision
+(function(){
+  const opts=[...document.querySelectorAll('#choices .opt')],fb=document.getElementById('revealFb');let k=null;
+  const msg={
+    a:'A full transcript shown during playback duplicates the narration, which risks the Redundancy principle and can overload learners. Offering it on demand is usually better.',
+    b:'Audio only keeps it coherent, but some learners lose key terms. Consider verbal signposts (Signalling) and a way to review terms.',
+    c:'Support on demand respects limited capacity: learners get help when needed without duplicate input. Check that the cards are short and clearly signalled.'
+  };
+  opts.forEach(o=>o.addEventListener('click',()=>{k=o.dataset.k;opts.forEach(x=>x.setAttribute('aria-pressed',x===o))}));
+  document.getElementById('reveal').addEventListener('click',()=>{
+    fb.textContent=k?msg[k]:'Choose an option first.';fb.classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
