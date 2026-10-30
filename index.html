@@ -195,13 +195,13 @@ details.card p{margin:0 0 12px}
   <div class="card clip">
     <span class="tag">Format A</span>
     <h3>Audio-only podcast</h3>
-    <p class="small">NotebookLM, two conversational hosts. About 5 minutes. Made by Seth.</p>
+    <p class="small">NotebookLM, two conversational hosts. About 5 minutes.</p>
     <audio controls preload="metadata" src="media/How_Climate_Extremes_Drive_Local_Migration.m4a"><a href="media/How_Climate_Extremes_Drive_Local_Migration.m4a">Download the podcast (M4A)</a></audio>
   </div>
   <div class="card clip">
     <span class="tag">Format B</span>
     <h3>Video overview</h3>
-    <p class="small">NotebookLM video overview of the same reading. About 6 minutes. Made by Seth.</p>
+    <p class="small">NotebookLM video overview of the same reading. About 6 minutes.</p>
     <video controls preload="metadata" playsinline src="media/Subnational_Climate_Migration.mp4"><a href="media/Subnational_Climate_Migration.mp4">Download the video (MP4)</a></video>
   </div>
   <div class="card">
@@ -253,12 +253,13 @@ details.card p{margin:0 0 12px}
     <div class="todo"><b>TODO:</b> these figures come from our research table. Confirm them against the paper before publishing.</div>
   </div>
 
-  <div class="card clip" data-src="media/module1-study-guide-questions.pdf">
+  <div class="card">
     <span class="tag">Example</span>
     <h3>Study guide for the climate reading</h3>
-    <p class="small">Questions only, no answers.</p>
-    <p class="media" hidden><a class="btn ghost" href="media/module1-study-guide-questions.pdf" target="_blank" rel="noopener">Open the study guide</a></p>
-    <div class="todo"><b>TODO (Seth):</b> add <code>module1-study-guide-questions.pdf</code> to the <code>media</code> folder.</div>
+    <p>Six open-ended questions, no answers, in three parts that build from recall to application: scope and method, hazard frameworks, then synthesis and policy.</p>
+    <p class="quote">Why do droughts typically display no statistically significant immediate (same-year) response in migration data?</p>
+    <p class="small">One question from Part 2. Notice how it depends on the rapid-onset and slow-onset terms introduced first. The full guide is a 2-page PDF.</p>
+    <p><a class="btn ghost" href="media/module1-study-guide-questions.pdf" target="_blank" rel="noopener">Open the study guide</a></p>
   </div>
 
   <p>Poducator's before and after questions follow the same idea.</p>
@@ -351,7 +352,6 @@ details.card p{margin:0 0 12px}
   <label for="q3">3. What might audio fail to do?</label>
   <textarea id="q3" placeholder="Consider access, attention, assessment, language."></textarea>
   <p class="small">Your responses stay in your browser. To discuss them with the cohort, share a sentence in the Movable Feast thread on the course blog.</p>
-  <div class="todo"><b>DECISION:</b> shared wall of responses needs a backend (Supabase). Keep or drop by midweek.</div>
 </section>
 
 <!-- DESIGN NOTES -->
@@ -454,12 +454,6 @@ document.querySelectorAll('.quiz').forEach(q=>{
     tile.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code that opens this page" shape-rendering="crispEdges" viewBox="0 0 '+size+' '+size+'"><rect width="'+size+'" height="'+size+'" fill="#fff"/><path fill="#000" d="'+d+'"/></svg>';
   }catch(e){tile.hidden=true}
 })();
-
-// Show media only when the file exists, otherwise show the TODO note
-document.querySelectorAll('.clip[data-src]').forEach(function(c){
-  var m=c.querySelector('.media,audio,video'),t=c.querySelector('.todo');
-  fetch(c.dataset.src,{method:'HEAD'}).then(function(r){if(!r.ok)throw 0;m.hidden=false;t.hidden=true}).catch(function(){m.hidden=true;t.hidden=false});
-});
 </script>
 </body>
 </html>
