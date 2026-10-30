@@ -76,8 +76,11 @@ details.card summary::after{content:"+";color:var(--accent);font-size:1.3rem}
 details.card[open] summary::after{content:"\2212"}
 details.card{padding:6px 18px;margin:10px 0}
 details.card p{margin:0 0 12px}
-.src-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin-right:6px}
-.src-tag.draft{border-color:var(--accent);color:var(--accent)}
+.plist{margin:0}
+.plist dt{font-family:var(--font-head);font-weight:600;margin-top:16px}
+.plist dt:first-child{margin-top:4px}
+.plist dd{margin:2px 0 0}
+.plist .where{display:block;font-size:.85rem;color:var(--muted);margin-top:2px}
 /* Desktop gate: invites laptop viewers to scan and open this page on a phone */
 .qrcard{display:none}
 .qrtile{background:#fff;padding:.5rem;border-radius:10px;line-height:0;flex:none}
@@ -106,6 +109,7 @@ details.card p{margin:0 0 12px}
   </div>
   <nav id="menu" aria-label="Main navigation">
     <a href="#start">Start here</a>
+    <a href="#principles">Mayer's 12 principles</a>
     <a href="#m1">1 · Why audio?</a>
     <a href="#m2">2 · Hear the difference</a>
     <a href="#m3">3 · Questions that change listening</a>
@@ -113,7 +117,6 @@ details.card p{margin:0 0 12px}
     <a href="#m4">4 · Make a decision</a>
     <a href="#m5">5 · Students as producers</a>
     <a href="#m6">6 · Transfer</a>
-    <a href="#principles">Design notes</a>
     <a href="#refs">References</a>
   </nav>
 </header>
@@ -126,7 +129,7 @@ details.card p{margin:0 0 12px}
   <h1>Press <span>play.</span></h1>
   <p class="lead">Podcasts can teach, and students can make them. Explore both sides of podcasting for learning, using Mayer's principles of multimedia learning as your lens.</p>
   <p class="small">Designed for educators, instructional designers and educational technology professionals. About 20 to 30 minutes, on your phone.</p>
-  <p><a class="btn" href="#m1">Start the lab</a></p>
+  <p><a class="btn" href="#principles">Start the lab</a></p>
   <aside class="qrcard" id="qrcard" aria-label="Open this page on your phone">
     <div class="qrtile" id="qrtile"></div>
     <div class="qrtext"><b>Built for your phone</b><span>Scan to open this page on a phone. It is designed for small screens and earbuds.</span><code id="qrurl"></code></div>
@@ -141,6 +144,61 @@ details.card p{margin:0 0 12px}
       <li>Evaluate a generated episode against those principles.</li>
       <li>Design a short student podcast task for your own context.</li>
     </ul>
+  </div>
+</section>
+
+<!-- MAYER'S PRINCIPLES -->
+<section id="principles">
+  <p class="eyebrow">Before you start · Your lens</p>
+  <h2>Mayer's 12 principles</h2>
+  <p>Mayer's principles describe how to combine words, sound and pictures so people learn from them. You will use them in every mission. They fall into three groups. Tap a group to see each principle and where it shows up on this page.</p>
+
+  <div class="tabs" role="tablist" aria-label="Groups of Mayer's principles" data-tabs>
+    <button role="tab" aria-selected="true" aria-controls="g1">Cut clutter</button>
+    <button role="tab" aria-selected="false" aria-controls="g2">Manage load</button>
+    <button role="tab" aria-selected="false" aria-controls="g3">Deepen learning</button>
+  </div>
+  <div class="card panel" id="g1" role="tabpanel">
+    <h3>Reduce extraneous processing</h3>
+    <p class="small">Strip out anything that uses up attention without helping learning.</p>
+    <dl class="plist">
+      <dt>Coherence</dt>
+      <dd>Leave out extra material such as background music, side stories and decoration.<span class="where">On this page: the case study asks whether this holds for audio drama, which relies on music and sound effects.</span></dd>
+      <dt>Signalling</dt>
+      <dd>Use cues that point to what matters most.<span class="where">On this page: the study guide questions in Mission 3 tell listeners what to listen for.</span></dd>
+      <dt>Redundancy</dt>
+      <dd>Narration with visuals works better than narration, visuals and the same words as on-screen text.<span class="where">On this page: Mission 4 weighs up showing a full transcript during playback.</span></dd>
+      <dt>Spatial contiguity</dt>
+      <dd>Place words next to the things they describe.<span class="where">On this page: quiz feedback appears right under the question it answers.</span></dd>
+      <dt>Temporal contiguity</dt>
+      <dd>Present narration at the same time as the visuals it describes, not before or after.<span class="where">On this page: the video overview in Mission 2.</span></dd>
+    </dl>
+  </div>
+  <div class="card panel" id="g2" role="tabpanel" hidden>
+    <h3>Manage essential processing</h3>
+    <p class="small">Help learners handle material that is complex by nature.</p>
+    <dl class="plist">
+      <dt>Segmenting</dt>
+      <dd>Break content into short chunks the learner paces.<span class="where">On this page: six short missions, and short listening segments in Mission 3.</span></dd>
+      <dt>Pre-training</dt>
+      <dd>Introduce key terms and concepts before the main lesson.<span class="where">On this page: this section, and the terms-first step in Mission 3.</span></dd>
+      <dt>Modality</dt>
+      <dd>Pair visuals with spoken words rather than printed text.<span class="where">On this page: the video overview in Mission 2 narrates its visuals.</span></dd>
+    </dl>
+  </div>
+  <div class="card panel" id="g3" role="tabpanel" hidden>
+    <h3>Foster generative processing</h3>
+    <p class="small">Encourage learners to make sense of what they hear and see.</p>
+    <dl class="plist">
+      <dt>Multimedia</dt>
+      <dd>Words and pictures together work better than words alone.<span class="where">On this page: Mission 2 compares an audio-only podcast with a video overview of the same reading.</span></dd>
+      <dt>Personalisation</dt>
+      <dd>Use a conversational style, with &ldquo;you&rdquo; and &ldquo;we&rdquo;, rather than a formal one.<span class="where">On this page: the two-host podcast in Mission 2, and the script checklist in Mission 5.</span></dd>
+      <dt>Voice</dt>
+      <dd>A friendly human voice works better than a machine voice.<span class="where">On this page: Mission 2, where 47% of students found an AI voice robotic or monotone.</span></dd>
+      <dt>Image</dt>
+      <dd>Seeing the speaker on screen does not necessarily help learning.<span class="where">On this page: the video overview in Mission 2 shows the content, not a talking head.</span></dd>
+    </dl>
   </div>
 </section>
 
@@ -352,26 +410,6 @@ details.card p{margin:0 0 12px}
   <label for="q3">3. What might audio fail to do?</label>
   <textarea id="q3" placeholder="Consider access, attention, assessment, language."></textarea>
   <p class="small">Your responses stay in your browser. To discuss them with the cohort, share a sentence in the Movable Feast thread on the course blog.</p>
-</section>
-
-<!-- DESIGN NOTES -->
-<section id="principles">
-  <p class="eyebrow">Design notes</p>
-  <h2>How this resource applies Mayer</h2>
-  <p>Tap a principle to see what we did with it. "Research table" means it comes from the two journal articles. "Draft" means it is our proposal.</p>
-<details class="card"><summary>Multimedia</summary><p><span class="src-tag draft">Draft</span>Each mission pairs words with audio, video or an interactive. The podcast and the video overview carry the same reading in two forms.</p></details>
-<details class="card"><summary>Coherence</summary><p><span class="src-tag">Research table</span>Scripts stay on the core reading. No background music, filler or tangents.</p></details>
-<details class="card"><summary>Signalling</summary><p><span class="src-tag">Research table</span>Study guide questions tell listeners what to pull out of the audio (Rezvani, 2026).</p></details>
-<details class="card"><summary>Redundancy</summary><p><span class="src-tag draft">Draft</span>Transcripts are offered on request, not shown during playback.</p></details>
-<details class="card"><summary>Spatial contiguity</summary><p><span class="src-tag draft">Draft</span>Feedback appears next to the question it answers.</p></details>
-<details class="card"><summary>Temporal contiguity</summary><p><span class="src-tag draft">Draft</span>The video overview times narration with its visuals. Audio-only episodes do not need this.</p></details>
-<details class="card"><summary>Segmenting</summary><p><span class="src-tag">Research table</span>Short recaps the learner paces (West &amp; Marvell, 2026). This page is also split into short missions.</p></details>
-<details class="card"><summary>Pre-training</summary><p><span class="src-tag">Research table</span>Key terms come first, such as rapid-onset and slow-onset hazards, before the statistics. A person checks the generated terminology.</p></details>
-<details class="card"><summary>Modality</summary><p><span class="src-tag">Research table</span>Audio is paired with visuals, prompts and discussion, not used alone (West &amp; Marvell, 2026).</p></details>
-<details class="card"><summary>Voice</summary><p><span class="src-tag">Research table</span>In one study 47% of students found the AI voice robotic or monotone. We flag voice quality and suggest editing, or human narration for key segments.</p></details>
-<details class="card"><summary>Personalisation</summary><p><span class="src-tag">Research table</span>Two-host conversational scripts using &ldquo;we&rdquo; and &ldquo;you&rdquo;. Robotic tone gets edited.</p></details>
-<details class="card"><summary>Image</summary><p><span class="src-tag draft">Draft</span>The video overview relies on relevant visuals, not a talking head.</p></details>
-  <div class="todo"><b>TODO (Seth):</b> confirm the draft entries. Our table had these cells empty: Multimedia, Redundancy, Spatial, Temporal and Image.</div>
 </section>
 
 </main>
