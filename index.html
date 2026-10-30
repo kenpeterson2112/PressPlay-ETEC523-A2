@@ -21,7 +21,17 @@ nav#menu{display:none;border-top:1px solid var(--line);background:var(--bg)}
 nav#menu.open{display:block}
 nav#menu a{display:block;padding:14px 16px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 section{padding:44px 0 8px}
-.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+.eyebrow{font-family:var(--font-head);font-size:.9rem;font-weight:600;color:var(--accent);margin:0 0 6px}
+section>.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:1rem;margin-bottom:10px}
+.pill{display:inline-block;background:var(--accent);color:var(--accent-ink);font-size:.85rem;font-weight:700;padding:3px 12px;border-radius:99px}
+/* Each section gets its own accent; buttons, tabs, labels and highlights inside it follow */
+#m1,#m6{--accent:#6cc4ff}
+#m2{--accent:#ff8a73}
+#m3{--accent:#b9a4ff}
+#case{--accent:#ffad5c}
+#m4{--accent:#ff8fc0}
+#m5{--accent:#6ee0b0}
+section{--soft:color-mix(in srgb,var(--accent) 16%,var(--card))}
 h1,h2,h3,.brand,.btn{font-family:var(--font-head)}
 h1{font-size:2.5rem;line-height:1.05;margin:8px 0 14px;letter-spacing:-.02em}
 h1 span{color:var(--accent)}
@@ -32,7 +42,7 @@ p{margin:0 0 14px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
 .btn.ghost{background:none;border:2px solid var(--accent);color:var(--accent)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
-.tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--soft);color:var(--accent);padding:3px 9px;border-radius:99px;margin-bottom:8px}
+.tag{display:inline-block;font-family:var(--font-head);font-size:.8rem;font-weight:600;background:var(--soft);color:var(--accent);padding:3px 10px;border-radius:99px;margin-bottom:8px}
 .tabs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;padding-bottom:6px}
 .tabs button{min-width:0;min-height:44px;padding:6px 10px;line-height:1.25;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.95rem}
 .tabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
@@ -149,7 +159,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MAYER'S PRINCIPLES -->
 <section id="principles">
-  <p class="eyebrow">Before you start · Your lens</p>
+  <p class="eyebrow"><span class="pill">Before you start</span>Your lens</p>
   <h2>Mayer's 12 principles</h2>
   <p>Mayer's principles describe how to combine words, sound and pictures so people learn from them. You will use them in every mission. They fall into three groups. Tap a group to see each principle and where it shows up on this page.</p>
 
@@ -204,7 +214,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MISSION 1 -->
 <section id="m1">
-  <p class="eyebrow">Mission 01 · Foundations</p>
+  <p class="eyebrow"><span class="pill">Mission 1</span>Foundations</p>
   <h2>Why audio?</h2>
   <p>Mayer's theory rests on three assumptions about how people learn from words and pictures. Tap each one and think about what it means for a listener with earbuds in.</p>
 
@@ -246,7 +256,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MISSION 2 -->
 <section id="m2">
-  <p class="eyebrow">Mission 02 · Hear the difference</p>
+  <p class="eyebrow"><span class="pill">Mission 2</span>Hear the difference</p>
   <h2>One reading, two formats</h2>
   <p>We turned one climate reading (Petrova et al., 2026, on climate extremes and migration) into an audio podcast and a video overview with NotebookLM. Spend two minutes on each and notice what changes.</p>
 
@@ -282,7 +292,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MISSION 3 -->
 <section id="m3">
-  <p class="eyebrow">Mission 03 · Questions that change listening</p>
+  <p class="eyebrow"><span class="pill">Mission 3</span>Questions that change listening</p>
   <h2>From passive listening to active retrieval</h2>
   <p>Audio on its own invites passive listening. Questions give learners a reason to listen. Two of Mayer's principles shape the design: <b>Pre-training</b> (key terms first) and <b>Segmenting</b> (short chunks the learner paces).</p>
 
@@ -333,7 +343,7 @@ details.card p{margin:0 0 12px}
 
 <!-- CASE FILE -->
 <section id="case">
-  <p class="eyebrow">Case study · A real classroom</p>
+  <p class="eyebrow"><span class="pill">Case study</span>A real classroom</p>
   <h2>The Hollow in a Grade 6 class</h2>
   <p><i>The Hollow</i> from GZM Shows is a modern retelling of Washington Irving's <i>The Legend of Sleepy Hollow</i>. Three sixth graders follow the trail of the Headless Horseman, and listeners decide whether he is a frightening ghoul or simply misunderstood. It is an example of a podcast series that teachers use to support literacy instruction and to build good listening skills. GZM Shows also runs an educator site with classroom extras to go with its series.</p>
   <p><a class="btn" href="https://gzmshows.com/shows/the-hollow/" target="_blank" rel="noopener">Visit The Hollow on GZM Shows</a></p>
@@ -363,7 +373,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MISSION 4 -->
 <section id="m4">
-  <p class="eyebrow">Mission 04 · Make a decision</p>
+  <p class="eyebrow"><span class="pill">Mission 4</span>Make a decision</p>
   <h2>You're the learning designer</h2>
   <div class="card">
     <p class="eyebrow">Your brief</p>
@@ -381,7 +391,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MISSION 5 -->
 <section id="m5">
-  <p class="eyebrow">Mission 05 · Students as producers</p>
+  <p class="eyebrow"><span class="pill">Mission 5</span>Students as producers</p>
   <h2>Make a two-minute episode</h2>
   <p>Podcasts are also something students can create. Use Mayer's principles as a design checklist for the task.</p>
   <div class="card">
@@ -400,7 +410,7 @@ details.card p{margin:0 0 12px}
 
 <!-- MISSION 6 -->
 <section id="m6">
-  <p class="eyebrow">Mission 06 · Transfer your learning</p>
+  <p class="eyebrow"><span class="pill">Mission 6</span>Transfer your learning</p>
   <h2>Design a podcast activity</h2>
   <p>Start with a learning problem, not a tool.</p>
   <label for="q1">1. What learning problem do you want to address?</label>
