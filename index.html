@@ -96,6 +96,14 @@ details.card p{margin:0 0 12px}
 .dots{display:flex;gap:8px}
 .dots button{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
 .dots button[aria-current="true"]{background:var(--accent)}
+details.sub{border-top:1px solid var(--line);padding:4px 0}
+details.sub summary{cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-head);font-weight:600;list-style:none}
+details.sub summary::-webkit-details-marker{display:none}
+details.sub summary::after{content:"+";color:var(--accent);font-size:1.3rem}
+details.sub[open] summary::after{content:"\2212"}
+details.sub h4{font-family:var(--font-head);font-size:1rem;margin:14px 0 4px;color:var(--accent)}
+ul.levels{list-style:none;padding:0;margin:0 0 6px;font-size:.92rem}
+ul.levels li{margin:3px 0}
 .plist{margin:0}
 .plist dt{font-family:var(--font-head);font-weight:600;margin-top:16px}
 .plist dt:first-child{margin-top:4px}
@@ -431,7 +439,44 @@ details.card p{margin:0 0 12px}
       <li><b>Voice:</b> their own, or a deliberate choice.</li>
       <li><b>Audience check:</b> a peer listens and answers two questions.</li>
     </ul>
-    <div class="todo"><b>TODO (Ken):</b> add a simple rubric idea and a student-friendly planning template.</div>
+    <details class="sub">
+      <summary>Planning template</summary>
+      <p class="small">Answer each prompt in a sentence or two before you record.</p>
+      <ol class="clean">
+        <li><b>Topic and listener:</b> What is your episode about, and who is it for?</li>
+        <li><b>One key idea:</b> If your listener remembers one thing, what should it be?</li>
+        <li><b>Three principles:</b> Which three of Mayer's principles will you use, and how? <span class="small">(e.g. Pre-training: define two key terms in the first 20 seconds.)</span></li>
+        <li><b>Opening line:</b> Write the first sentence you'll say.</li>
+        <li><b>Peer check:</b> Write two questions your peer listener should be able to answer afterwards.</li>
+      </ol>
+    </details>
+    <details class="sub">
+      <summary>Rubric</summary>
+      <h4>Clarity of the idea</h4>
+      <ul class="levels">
+        <li><b>Beginning:</b> The main idea is hard to identify.</li>
+        <li><b>Developing:</b> The main idea is there but competes with side points.</li>
+        <li><b>Strong:</b> One clear idea, stated early and reinforced at the end.</li>
+      </ul>
+      <h4>Use of three principles</h4>
+      <ul class="levels">
+        <li><b>Beginning:</b> Fewer than three principles, or they're named but not applied.</li>
+        <li><b>Developing:</b> Three principles applied, but one is weak or unclear.</li>
+        <li><b>Strong:</b> Three principles clearly applied, and the student can explain why.</li>
+      </ul>
+      <h4>Accuracy</h4>
+      <ul class="levels">
+        <li><b>Beginning:</b> Contains errors or unchecked AI-generated terms.</li>
+        <li><b>Developing:</b> Mostly accurate, with minor slips.</li>
+        <li><b>Strong:</b> Accurate, with terms checked against the source.</li>
+      </ul>
+      <h4>Delivery</h4>
+      <ul class="levels">
+        <li><b>Beginning:</b> Hard to follow, rushed, or over two and a half minutes.</li>
+        <li><b>Developing:</b> Clear, but the pace or tone is uneven.</li>
+        <li><b>Strong:</b> Conversational, well paced, and about two minutes.</li>
+      </ul>
+    </details>
   </div>
 </section>
 
