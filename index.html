@@ -78,7 +78,7 @@ code{overflow-wrap:anywhere;font-size:.88em}
 .quote{margin:12px 0;padding:10px 14px;border-left:4px solid var(--accent);font-style:italic}
 .quote.ph{border-left-style:dashed;color:var(--muted);font-style:normal}
 .frame iframe{display:block;width:100%;height:min(760px,80vh);border-radius:12px;background:var(--bg)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:12px;margin:10px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(6rem,1fr));gap:12px;margin:10px 0}
 .stat b{font-family:var(--font-head);font-size:2rem;line-height:1;color:var(--accent);display:block}
 .stat span{font-size:.88rem;color:var(--muted);display:block;margin-top:4px}
 details.card summary{cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font-head);font-weight:600;list-style:none}
@@ -87,6 +87,15 @@ details.card summary::after{content:"+";color:var(--accent);font-size:1.3rem}
 details.card[open] summary::after{content:"\2212"}
 details.card{padding:6px 18px;margin:10px 0}
 details.card p{margin:0 0 12px}
+.carousel{margin-top:14px}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;margin:0;font-size:1.1rem}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:6px}
+.car-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);background:none;color:var(--accent);font-size:1.5rem;line-height:1;cursor:pointer}
+.dots{display:flex;gap:8px}
+.dots button{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
+.dots button[aria-current="true"]{background:var(--accent)}
 .plist{margin:0}
 .plist dt{font-family:var(--font-head);font-weight:600;margin-top:16px}
 .plist dt:first-child{margin-top:4px}
@@ -273,14 +282,25 @@ details.card p{margin:0 0 12px}
     <video controls preload="metadata" playsinline src="media/Subnational_Climate_Migration.mp4"><a href="media/Subnational_Climate_Migration.mp4">Download the video (MP4)</a></video>
   </div>
   <div class="card">
-    <p class="eyebrow">What students said</p>
-    <h3>A small study of AI podcasts</h3>
+    <h3>What students say</h3>
+    <p class="small">Based on a <a href="https://doi.org/10.1080/03098265.2026.2682208" target="_blank" rel="noopener">study</a> where students listened to short AI-generated post-lecture podcasts.</p>
     <div class="stats">
-      <div class="stat"><b>90%</b><span>agreed the podcasts improved their learning</span></div>
-      <div class="stat"><b>47%</b><span>called the AI voice robotic or monotone</span></div>
+      <div class="stat"><b>90%</b><span>agreed podcasts improved their learning</span></div>
+      <div class="stat"><b>92%</b><span>said 15 to 25 minutes was just right</span></div>
+      <div class="stat"><b>92%</b><span>found it easy to integrate into their daily routines</span></div>
     </div>
-    <p class="small">45 students in one UK undergraduate geography module, using JellyPod (West &amp; Marvell, 2026). Self-reported, one course. That makes it a signal to test, not a verdict.</p>
-    <div class="todo"><b>TODO:</b> our research table also lists 92% "length just right" and 15 to 25 minute episodes. Confirm both in the full article before using them.</div>
+    <div class="carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="Student feedback">
+      <div class="slides">
+        <blockquote class="quote slide" aria-label="Quote 1 of 3">&ldquo;straight to the point and linked with the lectures&rdquo;</blockquote>
+        <blockquote class="quote slide" aria-label="Quote 2 of 3">&ldquo;short and easy to digest&rdquo;</blockquote>
+        <blockquote class="quote slide" aria-label="Quote 3 of 3">&ldquo;good way to check understanding after the lecture&rdquo;</blockquote>
+      </div>
+      <div class="car-nav">
+        <button class="car-btn" data-dir="-1" aria-label="Previous quote">&lsaquo;</button>
+        <div class="dots"></div>
+        <button class="car-btn" data-dir="1" aria-label="Next quote">&rsaquo;</button>
+      </div>
+    </div>
   </div>
 
   <div class="card">
@@ -510,6 +530,16 @@ document.querySelectorAll('.quiz').forEach(q=>{
     tile.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code that opens this page" shape-rendering="crispEdges" viewBox="0 0 '+size+' '+size+'"><rect width="'+size+'" height="'+size+'" fill="#fff"/><path fill="#000" d="'+d+'"/></svg>';
   }catch(e){tile.hidden=true}
 })();
+// Carousel
+document.querySelectorAll('[data-carousel]').forEach(function(c){
+  var track=c.querySelector('.slides'),slides=[...track.children],dots=c.querySelector('.dots');
+  var go=function(i){i=(i+slides.length)%slides.length;track.scrollTo({left:slides[i].offsetLeft-track.offsetLeft})};
+  var cur=function(){return Math.round(track.scrollLeft/track.clientWidth)};
+  slides.forEach(function(_,i){var b=document.createElement('button');b.setAttribute('aria-label','Show quote '+(i+1));b.addEventListener('click',function(){go(i)});dots.appendChild(b)});
+  var mark=function(){var k=cur();[...dots.children].forEach(function(b,i){b.setAttribute('aria-current',i===k)})};
+  c.querySelectorAll('.car-btn').forEach(function(b){b.addEventListener('click',function(){go(cur()+ +b.dataset.dir)})});
+  track.addEventListener('scroll',function(){window.requestAnimationFrame(mark)});mark();
+});
 </script>
 </body>
 </html>
