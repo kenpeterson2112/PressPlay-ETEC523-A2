@@ -41,6 +41,7 @@ h3.subhead{font-size:1.3rem;margin:32px 0 10px}
 p{margin:0 0 14px}
 .lead{font-size:1.1rem;color:var(--muted)}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px}
 .btn.ghost{background:none;border:2px solid var(--accent);color:var(--accent)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
 .tag{display:inline-block;font-family:var(--font-head);font-size:.8rem;font-weight:600;background:var(--soft);color:var(--accent);padding:3px 10px;border-radius:99px;margin-bottom:8px}
@@ -76,7 +77,7 @@ code{overflow-wrap:anywhere;font-size:.88em}
 .quote{margin:12px 0;padding:10px 14px;border-left:4px solid var(--accent);font-style:italic}
 .quote.ph{border-left-style:dashed;color:var(--muted);font-style:normal}
 .frame iframe{display:block;width:100%;height:min(760px,80vh);border-radius:12px;background:var(--bg)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(6rem,1fr));gap:12px;margin:10px 0}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0}
 .stat b{font-family:var(--font-head);font-size:2rem;line-height:1;color:var(--accent);display:block}
 .stat span{font-size:.88rem;color:var(--muted);display:block;margin-top:4px}
 details.card summary{cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font-head);font-weight:600;list-style:none}
@@ -288,12 +289,14 @@ ul.levels li{margin:3px 0}
     <video controls preload="metadata" playsinline src="media/Subnational_Climate_Migration.mp4"><a href="media/Subnational_Climate_Migration.mp4">Download the video (MP4)</a></video>
   </div>
   <div class="card">
-    <h3>What students say</h3>
-    <p class="small">Based on a <a href="https://doi.org/10.1080/03098265.2026.2682208" target="_blank" rel="noopener">study</a> where students listened to short AI-generated post-lecture podcasts.</p>
+    <p class="eyebrow">What students said</p>
+    <h3>A small study of AI podcasts</h3>
+    <p class="small">Based on a <a href="https://doi.org/10.1080/03098265.2026.2682208" target="_blank" rel="noopener">study</a> where students listened to short (15&ndash;25 minute) AI-generated post-lecture podcasts.</p>
     <div class="stats">
       <div class="stat"><b>90%</b><span>agreed podcasts improved their learning</span></div>
-      <div class="stat"><b>92%</b><span>said 15 to 25 minutes was just right</span></div>
-      <div class="stat"><b>92%</b><span>found it easy to integrate into their daily routines</span></div>
+      <div class="stat"><b>92%</b><span>said the podcast length was just right</span></div>
+      <div class="stat"><b>92%</b><span>found them easy to fit into their daily routines</span></div>
+      <div class="stat"><b>47%</b><span>called the AI voice robotic or monotone</span></div>
     </div>
     <div class="carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="Student feedback">
       <div class="slides">
@@ -307,6 +310,7 @@ ul.levels li{margin:3px 0}
         <button class="car-btn" data-dir="1" aria-label="Next quote">&rsaquo;</button>
       </div>
     </div>
+    <p class="small">45 students in one UK undergraduate geography module, using JellyPod (West &amp; Marvell, 2026). JellyPod let the instructor edit episodes after generation to fix specialised terms, which NotebookLM did not allow at the time. Self-reported, one course. That makes it a signal to test, not a verdict.</p>
   </div>
 
   <div class="card">
@@ -342,7 +346,7 @@ ul.levels li{margin:3px 0}
   <div class="card">
     <p class="eyebrow">Evidence</p>
     <h3>Study guides made the difference</h3>
-    <p>In a U.S. management information systems course (171 students), NotebookLM podcasts of textbook excerpts were paired with question-based study guides. Exam scores rose by about 3 points out of 15, and the gain was statistically significant. Final course grades did not change significantly. Students who engaged more with the podcasts did better on exams and in the course (Rezvani, 2026).</p>
+    <p>In a U.S. management information systems course (171 students), NotebookLM podcasts of textbook excerpts were paired with question-based study guides. Exam scores rose by about 3 points out of 15, and the gain was statistically significant. Final course grades did not change significantly, likely because exams were only 12% of the grade. Students who engaged more with the podcasts did better on exams and in the course. The instructor reviewed each 18 to 35 minute episode for accuracy before release (Rezvani, 2026).</p>
   </div>
 
   <div class="card">
@@ -351,7 +355,8 @@ ul.levels li{margin:3px 0}
     <p>Six open-ended questions, no answers, in three parts that build from recall to application: scope and method, hazard frameworks, then synthesis and policy.</p>
     <p class="quote">Why do droughts typically display no statistically significant immediate (same-year) response in migration data?</p>
     <p class="small">One question from Part 2. Notice how it depends on the rapid-onset and slow-onset terms introduced first. The full guide is a 2-page PDF.</p>
-    <p><a class="btn ghost" href="media/module1-study-guide-questions.pdf" target="_blank" rel="noopener">Open the study guide</a></p>
+    <p class="small">We also generated an interactive quiz from the same reading in NotebookLM. The quiz needs a Google sign-in.</p>
+    <p class="btnrow"><a class="btn ghost" href="media/module1-study-guide-questions.pdf" target="_blank" rel="noopener">Open the study guide</a><a class="btn ghost" href="https://notebook.google.com/notebook/bede2211-2e87-4084-8375-1a8fd10a6f0c/artifact/d372ff3f-0a18-48d2-b371-e8f8c1aacf98" target="_blank" rel="noopener">Try the interactive quiz</a></p>
   </div>
 
   <h3 class="subhead" id="poducator">Poducator: Test a Prototype</h3>
