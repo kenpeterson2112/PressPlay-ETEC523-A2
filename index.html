@@ -103,10 +103,13 @@ details.sub[open] summary::after{content:"\2212"}
 details.sub h4{font-family:var(--font-head);font-size:1rem;margin:14px 0 4px;color:var(--accent)}
 ul.levels{list-style:none;padding:0;margin:0 0 6px;font-size:.92rem}
 ul.levels li{margin:3px 0}
-.plist{margin:0}
-.plist dt{font-weight:700;margin-top:16px}
-.plist dt:first-child{margin-top:4px}
-.plist dd{margin:2px 0 0}
+.ppanel>h3{text-align:center;margin-top:4px}
+.ppanel>h3+.small{text-align:center;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.plist{margin:0;padding:0}
+.plist dt{position:relative;font-weight:700;margin-top:14px;padding-left:22px}
+.plist dt:first-child{margin-top:0}
+.plist dt::before{content:"";position:absolute;left:4px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.plist dd{margin:2px 0 0;padding-left:22px;color:var(--muted)}
 /* Desktop gate: invites laptop viewers to scan and open this page on a phone */
 .qrcard{display:none}
 .qrtile{background:#fff;padding:.5rem;border-radius:10px;line-height:0;flex:none}
@@ -184,7 +187,7 @@ ul.levels li{margin:3px 0}
     <button role="tab" aria-selected="false" aria-controls="g2">Manage load</button>
     <button role="tab" aria-selected="false" aria-controls="g3">Deepen learning</button>
   </div>
-  <div class="card panel" id="g1" role="tabpanel">
+  <div class="card panel ppanel" id="g1" role="tabpanel">
     <h3>Reduce extraneous processing</h3>
     <p class="small">Strip out anything that uses up attention without helping learning.</p>
     <dl class="plist">
@@ -200,7 +203,7 @@ ul.levels li{margin:3px 0}
       <dd>Present narration at the same time as the visuals it describes, not before or after.</dd>
     </dl>
   </div>
-  <div class="card panel" id="g2" role="tabpanel" hidden>
+  <div class="card panel ppanel" id="g2" role="tabpanel" hidden>
     <h3>Manage essential processing</h3>
     <p class="small">Help learners handle material that is complex by nature.</p>
     <dl class="plist">
@@ -212,7 +215,7 @@ ul.levels li{margin:3px 0}
       <dd>Pair visuals with spoken words rather than printed text.</dd>
     </dl>
   </div>
-  <div class="card panel" id="g3" role="tabpanel" hidden>
+  <div class="card panel ppanel" id="g3" role="tabpanel" hidden>
     <h3>Foster generative processing</h3>
     <p class="small">Encourage learners to make sense of what they hear and see.</p>
     <dl class="plist">
